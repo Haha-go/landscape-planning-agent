@@ -1,0 +1,250 @@
+# =========================
+# Python 通用
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# 注意：如果项目源码中有 lib/ 或 lib64/，不要忽略
+lib/
+lib64/
+
+# 虚拟环境
+.venv/
+venv/
+env/
+ENV/
+
+# .python-version 通常可提交；若不想提交，取消下一行注释
+# .python-version
+
+# 测试 / 覆盖率 / 类型检查 / 缓存
+.pytest_cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.ruff_cache/
+.pyright/
+.pytype/
+.cache/
+.benchmarks/
+
+# Jupyter
+.ipynb_checkpoints/
+.jupyter/
+
+# =========================
+# 环境变量 / 密钥 / 本地配置
+# =========================
+.env
+.env.*
+!.env.example
+
+*.local
+config.local.*
+settings.local.py
+
+secrets/
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+credentials.json
+service_account.json
+token.json
+client_secret*.json
+
+# =========================
+# IDE / 操作系统
+# =========================
+.idea/
+.vscode/
+*.iml
+*.swp
+*.swo
+*~
+.history/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =========================
+# 日志 / 临时 / 运行进程
+# =========================
+*.log
+logs/
+tmp/
+temp/
+*.pid
+*.sock
+celerybeat-schedule
+
+# =========================
+# RAG：向量库 / 索引 / 嵌入缓存
+# =========================
+chroma_db/
+chroma/
+.chroma/
+
+faiss_index/
+*.faiss
+*.index
+*.idx
+*.npy
+*.pkl
+*.pickle
+
+vectorstore/
+vector_store/
+vector_db/
+storage/
+indexes/
+indices/
+
+embedding_cache/
+embeddings/
+llm_cache/
+.langchain/
+.llama_index/
+
+# Docker 版向量数据库本地卷
+qdrant_storage/
+milvus_data/
+weaviate_data/
+
+# =========================
+# RAG / 模型：本地模型与缓存
+# =========================
+.cache/huggingface/
+.huggingface/
+.transformers/
+.sentence_transformers/
+torch/
+models/
+model_cache/
+hf_cache/
+ollama_data/
+
+*.pt
+*.pth
+*.onnx
+*.safetensors
+*.ckpt
+
+# =========================
+# 多 Agent：运行轨迹 / 输出 / 记忆
+# =========================
+runs/
+outputs/
+artifacts/
+checkpoints/
+experiments/
+traces/
+agent_logs/
+conversations/
+sessions/
+memory/
+
+autogen/
+.crewai/
+.langgraph/
+mlruns/
+mlartifacts/
+wandb/
+lightning_logs/
+
+# =========================
+# 数据 / 知识库 / 上传文件
+# =========================
+data/*
+!data/.gitkeep
+# 如果 data/sample/ 需要提交，取消下面两行注释
+# !data/sample/
+# !data/sample/**
+
+uploads/
+media/
+files/
+documents/
+raw_data/
+
+knowledge_base/*
+!knowledge_base/.gitkeep
+# 如果知识库需要版本控制，改成：
+# knowledge_base/*
+# !knowledge_base/.gitkeep
+# !knowledge_base/sample/
+
+# =========================
+# 本地数据库 / 容器数据卷
+# =========================
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+*.duckdb
+
+dump.rdb
+appendonly.aof
+
+postgres-data/
+pgdata/
+mysql-data/
+redis-data/
+mongo-data/
+
+# =========================
+# Docker / 部署本地覆盖
+# =========================
+docker-compose.override.yml
+
+# =========================
+# 前端（如果仓库里有前端）
+# =========================
+node_modules/
+dist/
+.npm/
+.yarn/
+.pnpm-store/
+
+# =========================
+# 这些通常应提交，不要忽略
+# =========================
+!requirements.txt
+!pyproject.toml
+!poetry.lock
+!Pipfile.lock
+!uv.lock
+!README.md
+!LICENSE
+!Dockerfile
+!docker-compose.yml
+!.env.example
+!config.example.*
