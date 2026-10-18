@@ -1,0 +1,792 @@
+{
+  "metric": "perf",
+  "first_token": {
+    "samples": 30,
+    "p95_ms": 770.78,
+    "target_ms": 3000,
+    "pass": true,
+    "values_ms": [
+      598.6,
+      754.51,
+      528.8,
+      542.85,
+      670.59,
+      528.12,
+      604.84,
+      731.51,
+      694.94,
+      694.86,
+      693.32,
+      644.58,
+      452.28,
+      711.01,
+      551.16,
+      743.71,
+      556.16,
+      539.89,
+      639.59,
+      638.55,
+      770.78,
+      446.83,
+      651.17,
+      554.67,
+      637.89,
+      610.57,
+      652.05,
+      510.93,
+      927.33,
+      657.15
+    ]
+  },
+  "token_ab": {
+    "n": 40,
+    "tokens_a_force_retrieve": 54324,
+    "tokens_b_intent": 17039,
+    "reduction": 0.6863448936013549,
+    "target": 0.25,
+    "pass": true,
+    "details": [
+      {
+        "id": "d001",
+        "query": "你好",
+        "tokens_a_force_retrieve": 1170,
+        "tokens_b_intent": 93,
+        "route_b": "direct"
+      },
+      {
+        "id": "d002",
+        "query": "您好",
+        "tokens_a_force_retrieve": 1474,
+        "tokens_b_intent": 89,
+        "route_b": "direct"
+      },
+      {
+        "id": "d003",
+        "query": "嗨",
+        "tokens_a_force_retrieve": 1194,
+        "tokens_b_intent": 93,
+        "route_b": "direct"
+      },
+      {
+        "id": "d004",
+        "query": "在吗",
+        "tokens_a_force_retrieve": 1111,
+        "tokens_b_intent": 74,
+        "route_b": "direct"
+      },
+      {
+        "id": "d005",
+        "query": "早上好",
+        "tokens_a_force_retrieve": 1201,
+        "tokens_b_intent": 94,
+        "route_b": "direct"
+      },
+      {
+        "id": "d006",
+        "query": "晚上好",
+        "tokens_a_force_retrieve": 1183,
+        "tokens_b_intent": 93,
+        "route_b": "direct"
+      },
+      {
+        "id": "d007",
+        "query": "你是谁",
+        "tokens_a_force_retrieve": 1315,
+        "tokens_b_intent": 83,
+        "route_b": "direct"
+      },
+      {
+        "id": "d008",
+        "query": "你能做什么",
+        "tokens_a_force_retrieve": 2076,
+        "tokens_b_intent": 244,
+        "route_b": "direct"
+      },
+      {
+        "id": "d009",
+        "query": "谢谢",
+        "tokens_a_force_retrieve": 1197,
+        "tokens_b_intent": 73,
+        "route_b": "direct"
+      },
+      {
+        "id": "d010",
+        "query": "多谢",
+        "tokens_a_force_retrieve": 1824,
+        "tokens_b_intent": 69,
+        "route_b": "direct"
+      },
+      {
+        "id": "d011",
+        "query": "再见",
+        "tokens_a_force_retrieve": 1092,
+        "tokens_b_intent": 69,
+        "route_b": "direct"
+      },
+      {
+        "id": "d012",
+        "query": "辛苦了",
+        "tokens_a_force_retrieve": 1783,
+        "tokens_b_intent": 91,
+        "route_b": "direct"
+      },
+      {
+        "id": "d013",
+        "query": "今天天气怎么样",
+        "tokens_a_force_retrieve": 1277,
+        "tokens_b_intent": 96,
+        "route_b": "direct"
+      },
+      {
+        "id": "d014",
+        "query": "讲个笑话",
+        "tokens_a_force_retrieve": 1311,
+        "tokens_b_intent": 117,
+        "route_b": "direct"
+      },
+      {
+        "id": "d015",
+        "query": "随便聊聊",
+        "tokens_a_force_retrieve": 1209,
+        "tokens_b_intent": 196,
+        "route_b": "direct"
+      },
+      {
+        "id": "d016",
+        "query": "帮我写首诗",
+        "tokens_a_force_retrieve": 1203,
+        "tokens_b_intent": 87,
+        "route_b": "direct"
+      },
+      {
+        "id": "d017",
+        "query": "什么是景观规划",
+        "tokens_a_force_retrieve": 1858,
+        "tokens_b_intent": 275,
+        "route_b": "direct"
+      },
+      {
+        "id": "d018",
+        "query": "用通俗语言介绍园林设计",
+        "tokens_a_force_retrieve": 1832,
+        "tokens_b_intent": 284,
+        "route_b": "direct"
+      },
+      {
+        "id": "d019",
+        "query": "景观和风景园林有什么区别",
+        "tokens_a_force_retrieve": 1597,
+        "tokens_b_intent": 331,
+        "route_b": "direct"
+      },
+      {
+        "id": "d020",
+        "query": "帮我总结一下刚才的对话",
+        "tokens_a_force_retrieve": 1630,
+        "tokens_b_intent": 122,
+        "route_b": "direct"
+      },
+      {
+        "id": "d021",
+        "query": "请用简单话解释公园",
+        "tokens_a_force_retrieve": 1529,
+        "tokens_b_intent": 190,
+        "route_b": "direct"
+      },
+      {
+        "id": "d022",
+        "query": "你好啊助手",
+        "tokens_a_force_retrieve": 1202,
+        "tokens_b_intent": 92,
+        "route_b": "direct"
+      },
+      {
+        "id": "d023",
+        "query": "今天心情不错",
+        "tokens_a_force_retrieve": 1294,
+        "tokens_b_intent": 79,
+        "route_b": "direct"
+      },
+      {
+        "id": "d024",
+        "query": "你吃饭了吗",
+        "tokens_a_force_retrieve": 1330,
+        "tokens_b_intent": 81,
+        "route_b": "direct"
+      },
+      {
+        "id": "d025",
+        "query": "周末去哪玩",
+        "tokens_a_force_retrieve": 1374,
+        "tokens_b_intent": 161,
+        "route_b": "direct"
+      },
+      {
+        "id": "d026",
+        "query": "推荐一部电影",
+        "tokens_a_force_retrieve": 1123,
+        "tokens_b_intent": 103,
+        "route_b": "direct"
+      },
+      {
+        "id": "d027",
+        "query": "1+1等于几",
+        "tokens_a_force_retrieve": 1272,
+        "tokens_b_intent": 66,
+        "route_b": "direct"
+      },
+      {
+        "id": "d028",
+        "query": "地球是圆的吗",
+        "tokens_a_force_retrieve": 1166,
+        "tokens_b_intent": 106,
+        "route_b": "direct"
+      },
+      {
+        "id": "d029",
+        "query": "介绍一下你自己",
+        "tokens_a_force_retrieve": 1245,
+        "tokens_b_intent": 208,
+        "route_b": "direct"
+      },
+      {
+        "id": "d030",
+        "query": "请自我介绍",
+        "tokens_a_force_retrieve": 1239,
+        "tokens_b_intent": 190,
+        "route_b": "direct"
+      },
+      {
+        "id": "r001",
+        "query": "绿地率一般怎么算",
+        "tokens_a_force_retrieve": 1214,
+        "tokens_b_intent": 1292,
+        "route_b": "retrieve"
+      },
+      {
+        "id": "r002",
+        "query": "居住区绿地率最低要求是多少",
+        "tokens_a_force_retrieve": 1323,
+        "tokens_b_intent": 1384,
+        "route_b": "retrieve"
+      },
+      {
+        "id": "r003",
+        "query": "旧区改建绿地率可以降到多少",
+        "tokens_a_force_retrieve": 1197,
+        "tokens_b_intent": 1209,
+        "route_b": "retrieve"
+      },
+      {
+        "id": "r004",
+        "query": "社区公园服务半径是多少",
+        "tokens_a_force_retrieve": 1296,
+        "tokens_b_intent": 1328,
+        "route_b": "retrieve"
+      },
+      {
+        "id": "r005",
+        "query": "游园服务半径宜为多少",
+        "tokens_a_force_retrieve": 1124,
+        "tokens_b_intent": 1121,
+        "route_b": "retrieve"
+      },
+      {
+        "id": "r006",
+        "query": "公园绿地绿化用地比例要求",
+        "tokens_a_force_retrieve": 1280,
+        "tokens_b_intent": 1280,
+        "route_b": "retrieve"
+      },
+      {
+        "id": "r007",
+        "query": "根据规范绿地率如何计算",
+        "tokens_a_force_retrieve": 1422,
+        "tokens_b_intent": 1381,
+        "route_b": "retrieve"
+      },
+      {
+        "id": "r008",
+        "query": "国标对居住区绿地率有什么规定",
+        "tokens_a_force_retrieve": 1556,
+        "tokens_b_intent": 1578,
+        "route_b": "retrieve"
+      },
+      {
+        "id": "r009",
+        "query": "CJJ对社区公园怎么要求",
+        "tokens_a_force_retrieve": 1478,
+        "tokens_b_intent": 1385,
+        "route_b": "retrieve"
+      },
+      {
+        "id": "r010",
+        "query": "公园主园路宽度不宜小于多少",
+        "tokens_a_force_retrieve": 1123,
+        "tokens_b_intent": 1132,
+        "route_b": "retrieve"
+      }
+    ]
+  },
+  "vs_pure_llm": {
+    "n": 50,
+    "pure_avg": 0.38,
+    "rag_avg": 0.92,
+    "lift": 1.4210526315789473,
+    "target": 0.4,
+    "pass": true,
+    "details": [
+      {
+        "id": "h001",
+        "query": "新建居住用地绿地率不宜低于多少",
+        "keywords": [
+          "30%"
+        ],
+        "pure_score": 0.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h002",
+        "query": "旧区改建绿地率不宜低于多少",
+        "keywords": [
+          "25%"
+        ],
+        "pure_score": 0.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h003",
+        "query": "绿地率怎么计算",
+        "keywords": [
+          "用地总面积"
+        ],
+        "pure_score": 1.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h004",
+        "query": "社区公园服务半径",
+        "keywords": [
+          "500"
+        ],
+        "pure_score": 0.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h005",
+        "query": "游园服务半径",
+        "keywords": [
+          "300"
+        ],
+        "pure_score": 0.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h006",
+        "query": "公园绿地内绿化用地比例",
+        "keywords": [
+          "65%"
+        ],
+        "pure_score": 0.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h007",
+        "query": "公园绿地分类有哪些",
+        "keywords": [
+          "综合公园"
+        ],
+        "pure_score": 1.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h008",
+        "query": "附属绿地是什么",
+        "keywords": [
+          "附属"
+        ],
+        "pure_score": 1.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h009",
+        "query": "居住区新建绿地率",
+        "keywords": [
+          "30%"
+        ],
+        "pure_score": 0.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h010",
+        "query": "居住区旧区改建绿地率",
+        "keywords": [
+          "25%"
+        ],
+        "pure_score": 0.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h011",
+        "query": "住宅日照满窗要求教学口径",
+        "keywords": [
+          "1小时"
+        ],
+        "pure_score": 0.0,
+        "rag_score": 0.0
+      },
+      {
+        "id": "h012",
+        "query": "人均公园绿地教学口径",
+        "keywords": [
+          "1.0"
+        ],
+        "pure_score": 0.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h013",
+        "query": "无障碍坡道坡度不宜大于",
+        "keywords": [
+          "1:12"
+        ],
+        "pure_score": 0.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h014",
+        "query": "主干路多层建筑退线",
+        "keywords": [
+          "5米"
+        ],
+        "pure_score": 0.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h015",
+        "query": "高层建筑退线教学口径",
+        "keywords": [
+          "10米"
+        ],
+        "pure_score": 0.0,
+        "rag_score": 0.0
+      },
+      {
+        "id": "h016",
+        "query": "集中绿地布置要求",
+        "keywords": [
+          "集中绿地"
+        ],
+        "pure_score": 1.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h017",
+        "query": "公园主园路宽度",
+        "keywords": [
+          "3.5"
+        ],
+        "pure_score": 0.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h018",
+        "query": "次园路宽度不宜小于",
+        "keywords": [
+          "1.5"
+        ],
+        "pure_score": 0.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h019",
+        "query": "儿童活动场地铺装",
+        "keywords": [
+          "弹性"
+        ],
+        "pure_score": 1.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h020",
+        "query": "公园无障碍通行",
+        "keywords": [
+          "无障碍"
+        ],
+        "pure_score": 1.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h021",
+        "query": "乡土植物优先",
+        "keywords": [
+          "适地适树"
+        ],
+        "pure_score": 0.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h022",
+        "query": "滨水绿地硬质铺装",
+        "keywords": [
+          "缓冲带"
+        ],
+        "pure_score": 1.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h023",
+        "query": "公园应急避难开敞空间",
+        "keywords": [
+          "应急"
+        ],
+        "pure_score": 1.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h024",
+        "query": "综合公园功能分区",
+        "keywords": [
+          "入口区"
+        ],
+        "pure_score": 1.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h025",
+        "query": "海绵源头减排",
+        "keywords": [
+          "源头"
+        ],
+        "pure_score": 1.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h026",
+        "query": "雨水花园溢流口",
+        "keywords": [
+          "溢流"
+        ],
+        "pure_score": 1.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h027",
+        "query": "透水铺装适用场所",
+        "keywords": [
+          "步行道"
+        ],
+        "pure_score": 0.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h028",
+        "query": "植草沟纵坡范围",
+        "keywords": [
+          "0.3%"
+        ],
+        "pure_score": 0.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h029",
+        "query": "初期雨水如何处理",
+        "keywords": [
+          "截污"
+        ],
+        "pure_score": 0.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h030",
+        "query": "下凹绿地安全提示",
+        "keywords": [
+          "安全"
+        ],
+        "pure_score": 1.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h031",
+        "query": "请说明新建居住用地绿地率不宜低于多少",
+        "keywords": [
+          "30%"
+        ],
+        "pure_score": 0.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h032",
+        "query": "请说明旧区改建绿地率不宜低于多少",
+        "keywords": [
+          "25%"
+        ],
+        "pure_score": 0.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h033",
+        "query": "请说明绿地率怎么计算",
+        "keywords": [
+          "用地总面积"
+        ],
+        "pure_score": 1.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h034",
+        "query": "请说明社区公园服务半径",
+        "keywords": [
+          "500"
+        ],
+        "pure_score": 1.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h035",
+        "query": "请说明游园服务半径",
+        "keywords": [
+          "300"
+        ],
+        "pure_score": 0.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h036",
+        "query": "请说明公园绿地内绿化用地比例",
+        "keywords": [
+          "65%"
+        ],
+        "pure_score": 0.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h037",
+        "query": "请说明公园绿地分类有哪些",
+        "keywords": [
+          "综合公园"
+        ],
+        "pure_score": 1.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h038",
+        "query": "请说明附属绿地是什么",
+        "keywords": [
+          "附属"
+        ],
+        "pure_score": 1.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h039",
+        "query": "请说明居住区新建绿地率",
+        "keywords": [
+          "30%"
+        ],
+        "pure_score": 0.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h040",
+        "query": "请说明居住区旧区改建绿地率",
+        "keywords": [
+          "25%"
+        ],
+        "pure_score": 0.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h041",
+        "query": "请说明住宅日照满窗要求教学口径",
+        "keywords": [
+          "1小时"
+        ],
+        "pure_score": 0.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h042",
+        "query": "请说明人均公园绿地教学口径",
+        "keywords": [
+          "1.0"
+        ],
+        "pure_score": 0.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h043",
+        "query": "请说明无障碍坡道坡度不宜大于",
+        "keywords": [
+          "1:12"
+        ],
+        "pure_score": 1.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h044",
+        "query": "请说明主干路多层建筑退线",
+        "keywords": [
+          "5米"
+        ],
+        "pure_score": 0.0,
+        "rag_score": 0.0
+      },
+      {
+        "id": "h045",
+        "query": "请说明高层建筑退线教学口径",
+        "keywords": [
+          "10米"
+        ],
+        "pure_score": 0.0,
+        "rag_score": 0.0
+      },
+      {
+        "id": "h046",
+        "query": "请说明集中绿地布置要求",
+        "keywords": [
+          "集中绿地"
+        ],
+        "pure_score": 1.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h047",
+        "query": "请说明公园主园路宽度",
+        "keywords": [
+          "3.5"
+        ],
+        "pure_score": 0.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h048",
+        "query": "请说明次园路宽度不宜小于",
+        "keywords": [
+          "1.5"
+        ],
+        "pure_score": 0.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h049",
+        "query": "请说明儿童活动场地铺装",
+        "keywords": [
+          "弹性"
+        ],
+        "pure_score": 0.0,
+        "rag_score": 1.0
+      },
+      {
+        "id": "h050",
+        "query": "请说明公园无障碍通行",
+        "keywords": [
+          "无障碍"
+        ],
+        "pure_score": 1.0,
+        "rag_score": 1.0
+      }
+    ]
+  },
+  "pass": true
+}

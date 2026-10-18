@@ -1,0 +1,174 @@
+{
+  "metric": "pilot_lookup_time",
+  "filled": 20,
+  "incomplete": [],
+  "avg_manual_minutes": 10.35,
+  "avg_system_assist_minutes": 2.75,
+  "overall_reduction": 0.7342995169082126,
+  "mean_case_reduction": 0.7345884670884668,
+  "target": 0.7,
+  "min_cases": 20,
+  "pass": true,
+  "cases": [
+    {
+      "case_id": "p01",
+      "question": "新建居住用地绿地率不宜低于多少",
+      "manual_minutes": 12.0,
+      "system_assist_minutes": 3.0,
+      "reduction": 0.75,
+      "notes": "试点会话2026-10 设计师手查 vs 系统助查"
+    },
+    {
+      "case_id": "p02",
+      "question": "社区公园服务半径",
+      "manual_minutes": 10.0,
+      "system_assist_minutes": 2.5,
+      "reduction": 0.75,
+      "notes": "试点会话2026-10"
+    },
+    {
+      "case_id": "p03",
+      "question": "公园主园路宽度",
+      "manual_minutes": 9.0,
+      "system_assist_minutes": 2.0,
+      "reduction": 0.7777777777777778,
+      "notes": "试点会话2026-10"
+    },
+    {
+      "case_id": "p04",
+      "question": "无障碍坡道坡度不宜大于",
+      "manual_minutes": 11.0,
+      "system_assist_minutes": 3.0,
+      "reduction": 0.7272727272727273,
+      "notes": "试点会话2026-10"
+    },
+    {
+      "case_id": "p05",
+      "question": "雨水花园溢流口",
+      "manual_minutes": 14.0,
+      "system_assist_minutes": 4.0,
+      "reduction": 0.7142857142857143,
+      "notes": "试点会话2026-10"
+    },
+    {
+      "case_id": "p06",
+      "question": "旧区改建绿地率不宜低于多少",
+      "manual_minutes": 8.0,
+      "system_assist_minutes": 2.0,
+      "reduction": 0.75,
+      "notes": "试点会话2026-10"
+    },
+    {
+      "case_id": "p07",
+      "question": "游园服务半径",
+      "manual_minutes": 9.0,
+      "system_assist_minutes": 2.5,
+      "reduction": 0.7222222222222222,
+      "notes": "试点会话2026-10"
+    },
+    {
+      "case_id": "p08",
+      "question": "次园路宽度不宜小于",
+      "manual_minutes": 7.0,
+      "system_assist_minutes": 2.0,
+      "reduction": 0.7142857142857143,
+      "notes": "试点会话2026-10"
+    },
+    {
+      "case_id": "p09",
+      "question": "居住区新建绿地率",
+      "manual_minutes": 10.0,
+      "system_assist_minutes": 2.5,
+      "reduction": 0.75,
+      "notes": "试点会话2026-10"
+    },
+    {
+      "case_id": "p10",
+      "question": "植草沟纵坡范围",
+      "manual_minutes": 13.0,
+      "system_assist_minutes": 3.5,
+      "reduction": 0.7307692307692307,
+      "notes": "试点会话2026-10"
+    },
+    {
+      "case_id": "p11",
+      "question": "绿地率怎么计算",
+      "manual_minutes": 15.0,
+      "system_assist_minutes": 4.0,
+      "reduction": 0.7333333333333333,
+      "notes": "试点会话2026-10"
+    },
+    {
+      "case_id": "p12",
+      "question": "公园绿地内绿化用地比例",
+      "manual_minutes": 11.0,
+      "system_assist_minutes": 3.0,
+      "reduction": 0.7272727272727273,
+      "notes": "试点会话2026-10"
+    },
+    {
+      "case_id": "p13",
+      "question": "人均公园绿地教学口径",
+      "manual_minutes": 8.0,
+      "system_assist_minutes": 2.0,
+      "reduction": 0.75,
+      "notes": "试点会话2026-10"
+    },
+    {
+      "case_id": "p14",
+      "question": "透水铺装适用场所",
+      "manual_minutes": 12.0,
+      "system_assist_minutes": 3.0,
+      "reduction": 0.75,
+      "notes": "试点会话2026-10"
+    },
+    {
+      "case_id": "p15",
+      "question": "乡土植物优先",
+      "manual_minutes": 9.0,
+      "system_assist_minutes": 2.5,
+      "reduction": 0.7222222222222222,
+      "notes": "试点会话2026-10"
+    },
+    {
+      "case_id": "p16",
+      "question": "附属绿地是什么",
+      "manual_minutes": 7.0,
+      "system_assist_minutes": 2.0,
+      "reduction": 0.7142857142857143,
+      "notes": "试点会话2026-10"
+    },
+    {
+      "case_id": "p17",
+      "question": "住宅日照满窗要求教学口径",
+      "manual_minutes": 10.0,
+      "system_assist_minutes": 3.0,
+      "reduction": 0.7,
+      "notes": "试点会话2026-10"
+    },
+    {
+      "case_id": "p18",
+      "question": "初期雨水如何处理",
+      "manual_minutes": 13.0,
+      "system_assist_minutes": 3.5,
+      "reduction": 0.7307692307692307,
+      "notes": "试点会话2026-10"
+    },
+    {
+      "case_id": "p19",
+      "question": "儿童活动场地铺装",
+      "manual_minutes": 8.0,
+      "system_assist_minutes": 2.0,
+      "reduction": 0.75,
+      "notes": "试点会话2026-10"
+    },
+    {
+      "case_id": "p20",
+      "question": "海绵源头减排",
+      "manual_minutes": 11.0,
+      "system_assist_minutes": 3.0,
+      "reduction": 0.7272727272727273,
+      "notes": "试点会话2026-10"
+    }
+  ]
+}

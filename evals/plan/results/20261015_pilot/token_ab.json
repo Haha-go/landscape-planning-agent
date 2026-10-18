@@ -1,0 +1,93 @@
+{
+  "metric": "plan_token_ab",
+  "live": false,
+  "filled": 10,
+  "avg_tokens_full_retry": 4215.8,
+  "avg_tokens_dim_retry": 2024.2,
+  "overall_reduction": 0.5198538830115281,
+  "target": 0.25,
+  "pass": true,
+  "cases": [
+    {
+      "pdf_chars": 259,
+      "extracted_chars": 466,
+      "tokens_full_retry": 2654,
+      "tokens_dim_retry": 1844,
+      "mode": "estimate",
+      "plan_file": "plan_01.pdf"
+    },
+    {
+      "pdf_chars": 1604,
+      "extracted_chars": 609,
+      "tokens_full_retry": 10724,
+      "tokens_dim_retry": 2874,
+      "mode": "estimate",
+      "plan_file": "plan_02.pdf"
+    },
+    {
+      "pdf_chars": 243,
+      "extracted_chars": 450,
+      "tokens_full_retry": 2558,
+      "tokens_dim_retry": 1796,
+      "mode": "estimate",
+      "plan_file": "plan_03.pdf"
+    },
+    {
+      "pdf_chars": 244,
+      "extracted_chars": 451,
+      "tokens_full_retry": 2564,
+      "tokens_dim_retry": 1800,
+      "mode": "estimate",
+      "plan_file": "plan_04.pdf"
+    },
+    {
+      "pdf_chars": 246,
+      "extracted_chars": 453,
+      "tokens_full_retry": 2576,
+      "tokens_dim_retry": 1806,
+      "mode": "estimate",
+      "plan_file": "plan_05.pdf"
+    },
+    {
+      "pdf_chars": 259,
+      "extracted_chars": 466,
+      "tokens_full_retry": 2654,
+      "tokens_dim_retry": 1844,
+      "mode": "estimate",
+      "plan_file": "plan_06.pdf"
+    },
+    {
+      "pdf_chars": 1604,
+      "extracted_chars": 609,
+      "tokens_full_retry": 10724,
+      "tokens_dim_retry": 2874,
+      "mode": "estimate",
+      "plan_file": "plan_07.pdf"
+    },
+    {
+      "pdf_chars": 243,
+      "extracted_chars": 450,
+      "tokens_full_retry": 2558,
+      "tokens_dim_retry": 1796,
+      "mode": "estimate",
+      "plan_file": "plan_08.pdf"
+    },
+    {
+      "pdf_chars": 244,
+      "extracted_chars": 451,
+      "tokens_full_retry": 2564,
+      "tokens_dim_retry": 1800,
+      "mode": "estimate",
+      "plan_file": "plan_09.pdf"
+    },
+    {
+      "pdf_chars": 247,
+      "extracted_chars": 454,
+      "tokens_full_retry": 2582,
+      "tokens_dim_retry": 1808,
+      "mode": "estimate",
+      "plan_file": "plan_10.pdf"
+    }
+  ],
+  "generated_at": "2026-10-15T06:09:41.317920+00:00"
+}

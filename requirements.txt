@@ -1,0 +1,23 @@
+# Landscape Planning Agent — locked versions
+langchain==1.2.10
+langgraph==1.0.9
+langchain-core==1.2.7
+langchain-openai==1.1.6
+fastapi==0.115.12
+uvicorn[standard]==0.34.0
+sse-starlette==2.2.1
+httpx==0.28.1
+pydantic==2.11.1
+pydantic-settings==2.8.1
+sqlalchemy[asyncio]==2.0.40
+asyncpg==0.30.0
+pymilvus==2.4.15
+FlagEmbedding==1.3.4
+sentence-transformers==3.4.1
+pymupdf==1.25.4
+python-multipart==0.0.20
+pytest==8.3.5
+aiofiles==24.1.0
+numpy==1.26.4
+torch==2.6.0
+transformers==4.49.0

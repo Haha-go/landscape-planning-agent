@@ -1,0 +1,9 @@
+{
+  "metric": "intent_accuracy",
+  "hit": 140,
+  "total": 140,
+  "accuracy": 1.0,
+  "target": 0.95,
+  "pass": true,
+  "misses": []
+}

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>规划助手</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/app.css" />
+</head>
+<body>
+  <div class="atmosphere" aria-hidden="true"></div>
+  <div class="page">
+    <header class="hero">
+      <div class="hero-top">
+        <div class="brand-block">
+          <h1 class="brand">规划助手</h1>
+          <p class="tagline">规范可溯源问答 · 方案智能审核</p>
+        </div>
+        <nav class="hero-nav" aria-label="次级入口">
+          <button type="button" class="nav-ghost" id="newChatBtn" title="新会话">新对话</button>
+          <a class="nav-link" href="#myPlans" id="navMyPlans" hidden>我的方案</a>
+          <a class="nav-link" href="#workbench" id="navWorkbench" hidden>审核工作台</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="chat-shell" aria-label="主对话">
+      <div class="shell-top">
+        <div class="agent-modes" role="radiogroup" aria-label="Agent 模式">
+          <button type="button" class="mode-btn active" data-mode="auto" role="radio" aria-checked="true">
+            <span class="mode-name">自动</span>
+            <span class="mode-desc">智能分流</span>
+          </button>
+          <button type="button" class="mode-btn" data-mode="kb" role="radio" aria-checked="false">
+            <span class="mode-name">规范智库</span>
+            <span class="mode-desc">可溯源问答</span>
+          </button>
+          <button type="button" class="mode-btn" data-mode="plan" role="radio" aria-checked="false">
+            <span class="mode-name">规划通</span>
+            <span class="mode-desc">方案评估</span>
+          </button>
+        </div>
+        <p class="mode-hint" id="modeHint">按问题自动选择规范智库或规划通；可附带 PDF 做方案评估。</p>
+      </div>
+
+      <div id="messages" class="messages" aria-live="polite">
+        <div class="welcome" id="welcome">
+          <p class="welcome-title">从一次提问开始</p>
+          <p class="welcome-sub">查规范可匿名；上传方案 PDF 请先登录提交人账号。</p>
+          <div class="suggestions" id="suggestions">
+            <button type="button" class="suggest" data-text="公园绿地率一般怎么算？">绿地率怎么算</button>
+            <button type="button" class="suggest" data-text="公园主园路宽度有什么要求？">主园路宽度</button>
+            <button type="button" class="suggest" data-text="帮我评估这份规划方案" data-mode="plan">评估规划方案</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="composer">
+        <div class="composer-box">
+          <div class="file-chip" id="fileChip" hidden>
+            <span id="fileChipName"></span>
+            <button type="button" class="chip-clear" id="fileChipClear" aria-label="移除附件">×</button>
+          </div>
+          <textarea id="chatInput" rows="2" placeholder="输入问题，例如：公园绿地率一般怎么算？"></textarea>
+          <div class="composer-bar">
+            <label class="attach-btn" id="fileAttachLabel" title="上传 PDF">
+              <input type="file" id="chatFile" accept=".pdf,application/pdf" hidden />
+              <span class="attach-icon" aria-hidden="true"></span>
+              <span id="fileAttachText">附件</span>
+            </label>
+            <label class="human-review" id="humanReviewWrap" hidden>
+              <input type="checkbox" id="needsHumanReview" checked />
+              <span>需要人工评审</span>
+            </label>
+            <p class="meta composer-meta" id="chatMeta"></p>
+            <button type="button" class="send-btn" id="chatSend">发送</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <section class="secondary session-bar" id="sessionBar" aria-label="账号登录">
+      <p class="hint">
+        提交人 <code>submitter</code> / <code>submitter123</code>
+        · 评审专家 <code>reviewer</code> / <code>reviewer123</code>
+      </p>
+      <form id="loginForm" class="review-login">
+        <input id="loginUser" placeholder="用户名" autocomplete="username" />
+        <input id="loginPass" type="password" placeholder="密码" autocomplete="current-password" />
+        <button type="submit" id="loginBtn">登录</button>
+        <button type="button" id="logoutBtn" class="ghost" hidden>退出</button>
+      </form>
+      <p class="meta" id="loginMeta"></p>
+    </section>
+
+    <details class="secondary" id="myPlans" hidden>
+      <summary>
+        <span>我的方案</span>
+        <span class="summary-cue">展开</span>
+      </summary>
+      <p class="hint">仅显示您上传的方案与系统/人工结论</p>
+      <div class="review-toolbar">
+        <button type="button" id="reloadMyPlans">刷新</button>
+      </div>
+      <div id="myPlansList" class="review-queue"></div>
+      <div id="myPlanDetail" class="review-detail" hidden></div>
+    </details>
+
+    <details class="secondary" id="workbench" hidden>
+      <summary>
+        <span>审核工作台</span>
+        <span class="summary-cue">展开</span>
+      </summary>
+      <p class="hint">系统分与人工分对照 · 仅评审专家 / 管理员</p>
+      <p class="meta" id="reviewGate" hidden>请先登录评审专家或管理员账号</p>
+      <div id="reviewTools" hidden>
+        <div class="review-toolbar">
+          <button type="button" id="reloadQueue">刷新队列</button>
+          <button type="button" id="reloadReport" class="ghost">刷新报表</button>
+          <label class="filter-label">状态
+            <select id="statusFilter">
+              <option value="in_review">审核中</option>
+              <option value="">全部</option>
+              <option value="approved">已通过</option>
+              <option value="rejected">已驳回</option>
+              <option value="revision_required">退回修改</option>
+              <option value="system_only">仅系统评估</option>
+            </select>
+          </label>
+        </div>
+        <div id="reviewReport" class="report-grid" aria-label="审核报表"></div>
+        <div id="reviewQueue" class="review-queue"></div>
+        <div id="reviewDetail" class="review-detail" hidden></div>
+      </div>
+    </details>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>

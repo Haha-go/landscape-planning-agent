@@ -1,0 +1,25 @@
+{
+  "description": "脱敏教学用语料：结构仿正式规范，数值为教学合成，不作为现行有效标准依据。展示用标号对齐现行正式标准号。",
+  "documents": [
+    {
+      "path": "CJJ_T_85_desensitized_green_space.md",
+      "title": "城市绿地分类标准",
+      "standard_code": "CJJ/T 85-2017"
+    },
+    {
+      "path": "GB_50180_desensitized_residential.md",
+      "title": "城市居住区规划设计标准",
+      "standard_code": "GB 50180-2018"
+    },
+    {
+      "path": "CJJ_48_desensitized_park_design.md",
+      "title": "公园设计规范",
+      "standard_code": "GB 51192-2016"
+    },
+    {
+      "path": "GB_51327_desensitized_sponge.md",
+      "title": "海绵城市建设评价标准",
+      "standard_code": "GB/T 51345-2018"
+    }
+  ]
+}

@@ -1,0 +1,582 @@
+{
+  "metric": "judge",
+  "judged": 80,
+  "skipped": 0,
+  "hallucination": {
+    "count": 0,
+    "total": 80,
+    "rate": 0.0,
+    "target": 0.03,
+    "pass": true
+  },
+  "citation": {
+    "ok": 50,
+    "total": 50,
+    "accuracy": 1.0,
+    "target": 0.95,
+    "pass": true
+  },
+  "results": [
+    {
+      "id": "n001",
+      "hallucination": false,
+      "citation_ok": null,
+      "reasons": [],
+      "route": "direct"
+    },
+    {
+      "id": "n002",
+      "hallucination": false,
+      "citation_ok": null,
+      "reasons": [],
+      "route": "direct"
+    },
+    {
+      "id": "n003",
+      "hallucination": false,
+      "citation_ok": null,
+      "reasons": [],
+      "route": "direct"
+    },
+    {
+      "id": "n004",
+      "hallucination": false,
+      "citation_ok": null,
+      "reasons": [],
+      "route": "direct"
+    },
+    {
+      "id": "n005",
+      "hallucination": false,
+      "citation_ok": null,
+      "reasons": [],
+      "route": "direct"
+    },
+    {
+      "id": "n006",
+      "hallucination": false,
+      "citation_ok": null,
+      "reasons": [],
+      "route": "direct"
+    },
+    {
+      "id": "n007",
+      "hallucination": false,
+      "citation_ok": null,
+      "reasons": [],
+      "route": "direct"
+    },
+    {
+      "id": "n008",
+      "hallucination": false,
+      "citation_ok": null,
+      "reasons": [],
+      "route": "direct"
+    },
+    {
+      "id": "n009",
+      "hallucination": false,
+      "citation_ok": null,
+      "reasons": [],
+      "route": "direct"
+    },
+    {
+      "id": "n010",
+      "hallucination": false,
+      "citation_ok": null,
+      "reasons": [],
+      "route": "direct"
+    },
+    {
+      "id": "n011",
+      "hallucination": false,
+      "citation_ok": null,
+      "reasons": [],
+      "route": "direct"
+    },
+    {
+      "id": "n012",
+      "hallucination": false,
+      "citation_ok": null,
+      "reasons": [],
+      "route": "direct"
+    },
+    {
+      "id": "n013",
+      "hallucination": false,
+      "citation_ok": null,
+      "reasons": [],
+      "route": "direct"
+    },
+    {
+      "id": "n014",
+      "hallucination": false,
+      "citation_ok": null,
+      "reasons": [],
+      "route": "direct"
+    },
+    {
+      "id": "n015",
+      "hallucination": false,
+      "citation_ok": null,
+      "reasons": [],
+      "route": "direct"
+    },
+    {
+      "id": "n016",
+      "hallucination": false,
+      "citation_ok": null,
+      "reasons": [],
+      "route": "direct"
+    },
+    {
+      "id": "n017",
+      "hallucination": false,
+      "citation_ok": null,
+      "reasons": [],
+      "route": "direct"
+    },
+    {
+      "id": "n018",
+      "hallucination": false,
+      "citation_ok": null,
+      "reasons": [],
+      "route": "direct"
+    },
+    {
+      "id": "n019",
+      "hallucination": false,
+      "citation_ok": null,
+      "reasons": [],
+      "route": "direct"
+    },
+    {
+      "id": "n020",
+      "hallucination": false,
+      "citation_ok": null,
+      "reasons": [],
+      "route": "direct"
+    },
+    {
+      "id": "n021",
+      "hallucination": false,
+      "citation_ok": null,
+      "reasons": [],
+      "route": "direct"
+    },
+    {
+      "id": "n022",
+      "hallucination": false,
+      "citation_ok": null,
+      "reasons": [],
+      "route": "direct"
+    },
+    {
+      "id": "n023",
+      "hallucination": false,
+      "citation_ok": null,
+      "reasons": [],
+      "route": "direct"
+    },
+    {
+      "id": "n024",
+      "hallucination": false,
+      "citation_ok": null,
+      "reasons": [],
+      "route": "direct"
+    },
+    {
+      "id": "n025",
+      "hallucination": false,
+      "citation_ok": null,
+      "reasons": [],
+      "route": "direct"
+    },
+    {
+      "id": "n026",
+      "hallucination": false,
+      "citation_ok": null,
+      "reasons": [],
+      "route": "direct"
+    },
+    {
+      "id": "n027",
+      "hallucination": false,
+      "citation_ok": null,
+      "reasons": [],
+      "route": "direct"
+    },
+    {
+      "id": "n028",
+      "hallucination": false,
+      "citation_ok": null,
+      "reasons": [],
+      "route": "direct"
+    },
+    {
+      "id": "n029",
+      "hallucination": false,
+      "citation_ok": null,
+      "reasons": [],
+      "route": "direct"
+    },
+    {
+      "id": "n030",
+      "hallucination": false,
+      "citation_ok": null,
+      "reasons": [],
+      "route": "direct"
+    },
+    {
+      "id": "k001",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k002",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k003",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k004",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k005",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k006",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k007",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k008",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k009",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k010",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k011",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k012",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k013",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k014",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k015",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k016",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k017",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k018",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k019",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k020",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k021",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k022",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k023",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k024",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k025",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k026",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k027",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k028",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k029",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k030",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k031",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k032",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k033",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k034",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k035",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k036",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k037",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k038",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k039",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k040",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k041",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k042",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k043",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k044",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k045",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k046",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k047",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k048",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k049",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    },
+    {
+      "id": "k050",
+      "hallucination": false,
+      "citation_ok": true,
+      "reasons": [],
+      "route": "retrieve"
+    }
+  ],
+  "pass": true
+}

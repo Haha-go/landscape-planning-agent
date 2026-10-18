@@ -1,0 +1,29 @@
+# Dockerfile.ingest — one-shot RAG ingest image (CPU torch + FlagEmbedding)
+FROM python:3.11-slim
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    HF_HUB_OFFLINE=1 \
+    TRANSFORMERS_OFFLINE=1
+
+RUN apt-get update -qq \
+    && apt-get install -y -qq --no-install-recommends build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+RUN pip install --no-cache-dir torch --index-url https://download.pytorch.org/whl/cpu \
+    && pip install --no-cache-dir \
+        pymilvus==2.4.15 \
+        FlagEmbedding==1.3.4 \
+        pymupdf==1.25.4 \
+        "sqlalchemy[asyncio]==2.0.40" \
+        asyncpg==0.30.0 \
+        pydantic-settings==2.8.1 \
+        pydantic==2.11.1 \
+        numpy==1.26.4 \
+        transformers==4.49.0 \
+        sentence-transformers==3.4.1
+
+# Code + models mounted at runtime
+CMD ["python", "scripts/ingest_kb.py", "knowledge_base/sample"]

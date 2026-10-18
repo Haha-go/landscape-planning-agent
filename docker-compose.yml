@@ -1,35 +1,32 @@
-# docker-compose.yml — EduAgent 本地开发环境（精简版）
+# docker-compose.yml — Landscape Planning Agent 本地开发环境
 # 启动：docker-compose --env-file .env.local up -d
 version: "3.9"
 
 services:
 
-  # ── PostgreSQL 主数据库（对外 5433，本机 5432 已占用）──
   postgres:
     image: postgres:15-alpine
-    container_name: edu_agent_postgres
+    container_name: landscape_postgres
     restart: unless-stopped
     environment:
       POSTGRES_DB: ${DB_NAME:-eduagent}
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_USER: ${DB_USER:-eduagent_user}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-123456}
       PGTZ: Asia/Shanghai
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      # 容器首次启动时自动执行建表脚本（见 3.2 节）
       - ./scripts/init_db.sql:/docker-entrypoint-initdb.d/01_init_db.sql:ro
     ports:
       - "5433:5432"
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME:-eduagent}"]
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-eduagent_user} -d ${DB_NAME:-eduagent}"]
       interval: 10s
       timeout: 5s
       retries: 5
 
-  # ── etcd（Milvus 元数据存储，仅内部使用，不对外暴露端口）──
   etcd:
     image: quay.io/coreos/etcd:v3.5.14
-    container_name: edu_agent_etcd
+    container_name: landscape_etcd
     restart: unless-stopped
     environment:
       ETCD_AUTO_COMPACTION_MODE: revision
@@ -43,10 +40,9 @@ services:
     volumes:
       - etcd_data:/etcd
 
-  # ── MinIO（Milvus 向量文件存储，仅内部使用，不对外暴露端口）──
   minio:
     image: minio/minio:latest
-    container_name: edu_agent_minio
+    container_name: landscape_minio
     restart: unless-stopped
     command: server /data
     environment:
@@ -60,15 +56,14 @@ services:
       timeout: 5s
       retries: 5
 
-  # ── Milvus 向量数据库（对外 19531，本机 19530 已占用）──
   milvus:
     image: milvusdb/milvus:v2.4.0
-    container_name: edu_agent_milvus
+    container_name: landscape_milvus
     restart: unless-stopped
     command: ["milvus", "run", "standalone"]
     environment:
-      ETCD_ENDPOINTS: etcd:2379                 # 连内部 etcd
-      MINIO_ADDRESS: minio:9000                 # 连内部 MinIO
+      ETCD_ENDPOINTS: etcd:2379
+      MINIO_ADDRESS: minio:9000
       MINIO_ACCESS_KEY_ID: ${MINIO_ACCESS_KEY:-minioadmin}
       MINIO_SECRET_ACCESS_KEY: ${MINIO_SECRET_KEY:-minioadmin}
     volumes:
@@ -85,24 +80,21 @@ services:
       interval: 15s
       timeout: 10s
       retries: 10
-  # ── Attu（Milvus 可视化管理界面，对外 30000）──
+
   attu:
     image: zilliz/attu:v2.4.12
-    container_name: edu_agent_attu
+    container_name: landscape_attu
     restart: unless-stopped
     environment:
-      # Attu 在 Docker 内部访问 Milvus，必须使用服务名 milvus:19530，不能写 localhost:19531
       MILVUS_URL: milvus:19530
       SERVER_PORT: "3000"
       TZ: Asia/Shanghai
     ports:
-      # 不写 127.0.0.1，默认绑定 0.0.0.0，外部可通过 http://192.168.88.100:30000 访问
       - "30000:3000"
     depends_on:
       milvus:
         condition: service_healthy
 
-# ── 数据卷（持久化，重启容器数据不丢失）──
 volumes:
   postgres_data:
   etcd_data:

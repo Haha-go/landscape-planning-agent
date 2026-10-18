@@ -86,6 +86,7 @@ client_secret*.json
 # =========================
 .idea/
 .vscode/
+.cursor/
 *.iml
 *.swp
 *.swo
@@ -105,6 +106,7 @@ temp/
 *.pid
 *.sock
 celerybeat-schedule
+scripts/_tmp*
 
 # =========================
 # RAG：向量库 / 索引 / 嵌入缓存
@@ -147,7 +149,8 @@ weaviate_data/
 .transformers/
 .sentence_transformers/
 torch/
-models/
+# 仅忽略仓库根目录 weights；勿误伤 backend/models/
+/models/
 model_cache/
 hf_cache/
 ollama_data/
@@ -190,6 +193,7 @@ data/*
 # !data/sample/**
 
 uploads/
+evals/plan/fixtures/*.pdf
 media/
 files/
 documents/
@@ -197,10 +201,10 @@ raw_data/
 
 knowledge_base/*
 !knowledge_base/.gitkeep
-# 如果知识库需要版本控制，改成：
-# knowledge_base/*
-# !knowledge_base/.gitkeep
-# !knowledge_base/sample/
+!knowledge_base/sample/
+!knowledge_base/sample/**
+!knowledge_base/standards/
+!knowledge_base/standards/**
 
 # =========================
 # 本地数据库 / 容器数据卷

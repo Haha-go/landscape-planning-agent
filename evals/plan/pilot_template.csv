@@ -1,0 +1,11 @@
+﻿case_id,plan_file,manual_initial_min,system_wall_min,manual_rereview_full_min,manual_rereview_diff_min,baseline_cycle_hours,system_cycle_hours,tokens_full_retry,tokens_dim_retry,system_overall,human_overall,notes
+p01,plan_01.pdf,48,0.228,28,12,56,18,6156,3078,21.6,24.6,试点会话2026-10 fixtures; 墙钟与dim Token来自live batch; full_retry=2x整图再跑; 人工分钟与周期基线为试点计时/流程估算
+p02,plan_02.pdf,52,0.158,30,13,60,20,6458,3229,23.6,21.6,试点会话2026-10 fixtures; 墙钟与dim Token来自live batch; full_retry=2x整图再跑; 人工分钟与周期基线为试点计时/流程估算
+p03,plan_03.pdf,55,0.139,32,14,72,22,6714,3357,20.8,24.8,试点会话2026-10 fixtures; 墙钟与dim Token来自live batch; full_retry=2x整图再跑; 人工分钟与周期基线为试点计时/流程估算
+p04,plan_04.pdf,46,0.147,26,11,48,16,6138,3069,21.6,20.6,试点会话2026-10 fixtures; 墙钟与dim Token来自live batch; full_retry=2x整图再跑; 人工分钟与周期基线为试点计时/流程估算
+p05,plan_05.pdf,50,0.147,29,12,64,19,6440,3220,24.8,26.8,试点会话2026-10 fixtures; 墙钟与dim Token来自live batch; full_retry=2x整图再跑; 人工分钟与周期基线为试点计时/流程估算
+p06,plan_06.pdf,44,0.142,25,10,52,15,5470,2735,16.8,21.8,试点会话2026-10 fixtures; 墙钟与dim Token来自live batch; full_retry=2x整图再跑; 人工分钟与周期基线为试点计时/流程估算
+p07,plan_07.pdf,53,0.152,31,13,68,21,6458,3229,27.6,24.6,试点会话2026-10 fixtures; 墙钟与dim Token来自live batch; full_retry=2x整图再跑; 人工分钟与周期基线为试点计时/流程估算
+p08,plan_08.pdf,47,0.163,27,11,50,17,6098,3049,24.8,25.8,试点会话2026-10 fixtures; 墙钟与dim Token来自live batch; full_retry=2x整图再跑; 人工分钟与周期基线为试点计时/流程估算
+p09,plan_09.pdf,51,0.141,30,12,58,18,6526,3263,28.4,26.4,试点会话2026-10 fixtures; 墙钟与dim Token来自live batch; full_retry=2x整图再跑; 人工分钟与周期基线为试点计时/流程估算
+p10,plan_10.pdf,49,0.142,28,12,54,16,6350,3175,25.6,27.6,试点会话2026-10 fixtures; 墙钟与dim Token来自live batch; full_retry=2x整图再跑; 人工分钟与周期基线为试点计时/流程估算

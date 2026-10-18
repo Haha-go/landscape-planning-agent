@@ -1,225 +1,212 @@
 # backend/core/retry.py
-# 三层兜底机制：自动重试 → Agent 级降级 → 系统级兜底
+# 三层兜底：自动重试 → Agent 级降级 → 系统级兜底
 
-import asyncio                                   # 异步：用于超时控制和等待
-from functools import wraps                      # @wraps：装饰器里保留原函数的名字/文档
-from typing import Callable, Any, Optional       # 类型注解：可调用对象 / 任意 / 可选
+import asyncio
+from functools import wraps
+from typing import Callable, Any, Optional
 
-from backend.core.exceptions import (            # 引入 3.3 定义的异常（已去掉 Judge0 的 Sandbox 异常）
+from backend.core.exceptions import (
     LLMAPIError,
     MilvusConnectionError,
     InvalidInputError,
     AuthenticationError,
+    FileParseError,
 )
-from backend.core.logger import get_logger,configure_logging
+from backend.core.logger import get_logger
+from backend.core.metrics import record_metric
+
 logger = get_logger(__name__)
 
-# ── 异常分类 ───────────────────────────────────────────────
-# 可重试：多半是短暂故障（网络抖动、超时），重试一下可能就好
 RETRYABLE_ERRORS = (
     LLMAPIError,
     MilvusConnectionError,
     TimeoutError,
     ConnectionError,
 )
-# 不可重试：重试也没用（输入非法、认证失败），应立即抛出
 NON_RETRYABLE_ERRORS = (
     InvalidInputError,
     AuthenticationError,
+    FileParseError,
 )
 
-MAX_RETRIES = 2                  # 最多重试 2 次（加上首次 = 共 3 次尝试）
-RETRY_DELAYS = [1.0, 3.0]        # 第 1 次重试前等 1 秒，第 2 次前等 3 秒
-TIMEOUT_PER_ATTEMPT = 120.0       # 单次调用最多等 30 秒，超时算失败
 
+def is_non_retryable(exc: BaseException) -> bool:
+    """扫描件、非法输入、认证失败不得重试。"""
+    return isinstance(exc, NON_RETRYABLE_ERRORS)
+
+MAX_RETRIES = 2
+RETRY_DELAYS = [1.0, 3.0]
+TIMEOUT_PER_ATTEMPT = 120.0
+
+
+async def retry_call(
+    factory: Callable[[], Any],
+    *,
+    agent_type: str = "",
+    tool: str = "llm",
+    step: str | None = None,
+    timeout: float | None = None,
+) -> Any:
+    """重试单次调用。不可重试错误立即抛出；耗尽后抛出最后一次异常，不整段降级。"""
+    import time
+
+    last_error: Optional[Exception] = None
+    started = time.perf_counter()
+    limit = TIMEOUT_PER_ATTEMPT if timeout is None else timeout
+    for attempt in range(MAX_RETRIES + 1):
+        try:
+            result = await asyncio.wait_for(factory(), timeout=limit)
+            if attempt > 0:
+                logger.info("retry.succeeded", agent_type=agent_type, attempt=attempt + 1, step=step)
+            record_metric(
+                tool=tool,
+                step=step,
+                success=True,
+                latency_ms=(time.perf_counter() - started) * 1000,
+                retried=attempt > 0,
+                recovered=attempt > 0,
+                detail={"agent_type": agent_type, "attempts": attempt + 1},
+            )
+            return result
+        except NON_RETRYABLE_ERRORS as e:
+            logger.warning("retry.non_retryable_error", agent_type=agent_type, error=str(e), step=step)
+            record_metric(
+                tool=tool,
+                step=step,
+                success=False,
+                latency_ms=(time.perf_counter() - started) * 1000,
+                retried=False,
+                recovered=False,
+                detail={"agent_type": agent_type, "error": type(e).__name__},
+            )
+            raise
+        except Exception as e:
+            last_error = e
+            if attempt < MAX_RETRIES:
+                delay = RETRY_DELAYS[min(attempt, len(RETRY_DELAYS) - 1)]
+                logger.warning(
+                    "retry.attempt_failed",
+                    agent_type=agent_type,
+                    attempt=attempt + 1,
+                    max_retries=MAX_RETRIES,
+                    delay=delay,
+                    error=str(e),
+                    step=step,
+                )
+                await asyncio.sleep(delay)
+            else:
+                logger.error("retry.all_attempts_failed", agent_type=agent_type, error=str(e), step=step)
+                record_metric(
+                    tool=tool,
+                    step=step,
+                    success=False,
+                    latency_ms=(time.perf_counter() - started) * 1000,
+                    retried=True,
+                    recovered=False,
+                    detail={"agent_type": agent_type, "error": type(e).__name__, "attempts": attempt + 1},
+                )
+    assert last_error is not None
+    raise last_error
 
 
 def with_retry(agent_type: str = ""):
-    """三层兜底装饰器工厂。给异步函数套上「重试 → 降级 → 系统兜底」三层保护。
+    """三层兜底装饰器工厂。不可重试错误直接抛出。"""
 
-    用法：
-        @with_retry(agent_type="qa")
-        async def _invoke():
-            return await graph.ainvoke(state, config=config)
-    """
-    def decorator(func: Callable) -> Callable:       # 中间层：接收被装饰的函数
-        @wraps(func)                                 # 保留原函数的元信息（名字、docstring）
-        async def wrapper(*args, **kwargs) -> Any:   # 最内层：真正的执行逻辑
-
-            # ── 第一层：自动重试 ──────────────────────────
-            last_error: Optional[Exception] = None   # 记录最后一次的错误，留给后面降级用
-            for attempt in range(MAX_RETRIES + 1):   # 循环 3 次：attempt = 0, 1, 2
+    def decorator(func: Callable) -> Callable:
+        @wraps(func)
+        async def wrapper(*args, **kwargs) -> Any:
+            last_error: Optional[Exception] = None
+            for attempt in range(MAX_RETRIES + 1):
                 try:
-                    # 给单次调用套一个超时；超过 30 秒就抛 TimeoutError
                     result = await asyncio.wait_for(
                         func(*args, **kwargs),
                         timeout=TIMEOUT_PER_ATTEMPT,
                     )
-                    if attempt > 0:                  # 如果是重试后成功的，记一条日志
+                    if attempt > 0:
                         logger.info("retry.succeeded", agent_type=agent_type, attempt=attempt + 1)
-                    return result                    # 成功，直接返回，结束
-
-                except NON_RETRYABLE_ERRORS as e:    # 不可重试异常：立即抛出，不再重试
+                    return result
+                except NON_RETRYABLE_ERRORS as e:
                     logger.warning("retry.non_retryable_error", agent_type=agent_type, error=str(e))
-                    raise                            # 原样抛出，交给上层处理
-
-                except Exception as e:               # 其它（可重试）异常
-                    last_error = e                   # 记下来
-                    if attempt < MAX_RETRIES:        # 还没到上限：等待后重试
+                    raise
+                except Exception as e:
+                    last_error = e
+                    if attempt < MAX_RETRIES:
                         delay = RETRY_DELAYS[attempt]
                         logger.warning(
-                            "retry.attempt_failed", agent_type=agent_type,
-                            attempt=attempt + 1, max_retries=MAX_RETRIES, delay=delay, error=str(e),
+                            "retry.attempt_failed",
+                            agent_type=agent_type,
+                            attempt=attempt + 1,
+                            max_retries=MAX_RETRIES,
+                            delay=delay,
+                            error=str(e),
                         )
-                        await asyncio.sleep(delay)   # 等 1s 或 3s 再重试
-                    else:                            # 到上限了：记录失败，跳出循环去降级
+                        await asyncio.sleep(delay)
+                    else:
                         logger.error("retry.all_attempts_failed", agent_type=agent_type, error=str(e))
 
-            # ── 第二层：Agent 级降级 ──────────────────────
             try:
-                fallback_result = await AgentFallbackHandler.handle(  # 按 agent_type 找降级策略
+                fallback_result = await AgentFallbackHandler.handle(
                     agent_type=agent_type, original_error=last_error,
                 )
                 logger.info("retry.fallback_succeeded", agent_type=agent_type)
-                return fallback_result               # 降级成功，返回降级结果
-            except Exception as fallback_error:      # 连降级都失败
+                return fallback_result
+            except Exception as fallback_error:
                 logger.error("retry.fallback_failed", agent_type=agent_type, error=str(fallback_error))
 
-            # ── 第三层：系统级兜底 ────────────────────────
             logger.error("retry.system_fallback", agent_type=agent_type, original_error=str(last_error))
-            return _system_fallback_response(agent_type)  # 最后的保底，永远不会再失败
+            return _system_fallback_response(agent_type)
+
         return wrapper
+
     return decorator
 
 
-
 class AgentFallbackHandler:
-    """第二层降级：各 Agent 的专项降级策略（尽量保留核心功能，退化为更简单的实现）。"""
+    """第二层降级：各 Agent 专项策略。"""
 
     @classmethod
     async def handle(cls, agent_type: str, original_error: Exception) -> Any:
-        """根据 agent_type 选择对应的降级策略。"""
-        fallback_map = {                              # 类型 → 降级方法 的映射表
-            "qa":               cls._qa_fallback,
-            "exam_code":        cls._exam_code_fallback,
-            "exam_subjective":  cls._exam_subjective_fallback,
-            "resume":           cls._resume_fallback,
-            "interview":        cls._interview_fallback,
+        fallback_map = {
+            "qa": cls._qa_fallback,
+            "eval": cls._eval_fallback,
+            "eval_extract": cls._eval_fallback,
         }
-        handler = fallback_map.get(agent_type)        # 查表
+        handler = fallback_map.get(agent_type)
         if handler:
             return await handler()
-        raise original_error                          # 没有对应降级策略，原样抛出（交给系统兜底）
+        raise original_error
 
     @classmethod
     async def _qa_fallback(cls) -> dict:
-        """问答降级：知识库或模型不可用，返回提示语。"""
         logger.info("fallback.qa_service_unavailable")
         return {
             "fallback_used": True,
-            "content": "⚠️ 知识库检索暂时不可用，请稍后重试或直接联系教师提问。",
+            "content": "⚠️ 知识库检索暂时不可用，请稍后重试。",
             "structured_output": None,
         }
 
     @classmethod
-    async def _exam_code_fallback(cls) -> dict:
-        """代码批改降级：评分服务不可用，标记需教师人工复核。"""
-        logger.info("fallback.exam_code_basic")
+    async def _eval_fallback(cls) -> dict:
+        logger.info("fallback.eval_service_unavailable")
         return {
             "fallback_used": True,
-            "needs_teacher_review": True,
-            "fallback_note": "代码评分服务暂时不可用，已标记为需教师人工复核。",
-        }
-
-    @classmethod
-    async def _exam_subjective_fallback(cls) -> dict:
-        """简答题批改降级：标记需教师复核。"""
-        logger.info("fallback.exam_subjective_basic")
-        return {
-            "fallback_used": True,
-            "needs_teacher_review": True,
-            "fallback_note": "AI 评分服务暂时不可用，已标记为需教师人工批改。",
-        }
-
-    @classmethod
-    async def _resume_fallback(cls) -> dict:
-        """简历审查降级：提示服务不可用 / 检查文件。"""
-        logger.info("fallback.resume_service_unavailable")
-        return {
-            "fallback_used": True,
-            "content": "简历审查服务暂时不可用，请稍后重试。如持续失败，请检查上传的 PDF 文件是否完整。",
+            "content": "方案评估服务暂时不可用，请稍后重试。如持续失败，请检查上传的 PDF 是否完整可读。",
             "structured_output": None,
-        }
-
-    @classmethod
-    async def _interview_fallback(cls) -> dict:
-        """面试降级：跳过深度分析，返回基础反馈。"""
-        logger.info("fallback.interview_basic_feedback")
-        return {
-            "fallback_used": True,
-            "content": "面试评估服务暂时不可用，已记录本次面试对话，请稍后查看报告。",
-            "structured_output": None,
+            "status": "failed",
         }
 
 
 def _system_fallback_response(agent_type: str) -> dict:
-    """第三层：系统级兜底。所有降级都失败后返回它，保证用户始终能收到响应。"""
-    messages = {                                      # 按 agent_type 给不同的友好提示
-        "qa":        "非常抱歉，智能问答服务暂时不可用，请稍后再试，或直接联系教师提问。",
-        "exam":      "非常抱歉，试卷批改服务暂时不可用，您的提交已保存，待服务恢复后将自动处理。",
-        "resume":    "非常抱歉，简历审查服务暂时不可用，请稍后重新上传。",
-        "interview": "非常抱歉，模拟面试服务暂时不可用，请稍后重新开始。",
+    messages = {
+        "qa": "非常抱歉，智能问答服务暂时不可用，请稍后再试。",
+        "eval": "非常抱歉，方案评估服务暂时不可用，请稍后重新上传。",
+        "eval_extract": "非常抱歉，方案评估服务暂时不可用，请稍后重新上传。",
     }
-    content = messages.get(agent_type, "服务暂时不可用，请稍后再试。")  # 找不到就用通用提示
+    content = messages.get(agent_type, "服务暂时不可用，请稍后再试。")
     return {
         "messages": [],
         "content": content,
         "fallback_used": True,
-        "system_fallback": True,                      # 标记：走到了最后一层系统兜底
+        "system_fallback": True,
         "structured_output": None,
     }
-if __name__ == '__main__':
-    RETRY_DELAYS = [0.0, 0.0]  # 测试时把等待时间清零，不用真等 1s/3s
-    configure_logging()
-    calls = {"n": 0}
-
-    # ── ① 正常成功 ──────────────────────────────────────────────
-    @with_retry(agent_type="qa")
-    async def ok():
-        return "success"
-    # # ── ② 重试后成功 ────────────────────────────────────────────
-    @with_retry(agent_type="qa")
-    async def fail_twice_then_ok():
-        calls["n"] += 1
-        if calls["n"] < 3:
-            raise LLMAPIError("网络抖动")
-        return "recovered"
-
-    # # ── ③ 不可重试异常立即抛出 ──────────────────────────────────
-    @with_retry(agent_type="qa")
-    async def non_retryable():
-        raise InvalidInputError("输入非法")
-
-
-    # ── ④ 三次全败 + 无降级策略 → 第三层系统兜底 ────────────────
-    @with_retry(agent_type="")  # 空 agent_type → fallback_map 里找不到 → 直接系统兜底
-    async def always_fail():
-        raise LLMAPIError("一直失败")
-
-
-    # ── ⑤ 三次全败 + 有降级策略 → 第二层 Agent 降级 ─────────────
-    # 以 qa 为代表；resume / interview / exam_code / exam_subjective 结构完全相同
-    @with_retry(agent_type="qa")
-    async def qa_node_always_fail():
-        raise LLMAPIError("Milvus 连接超时")
-
-
-    async def main():
-        # result = await ok()
-        # print(f'result: {result}')
-        # result = await fail_twice_then_ok()
-        # result = await non_retryable()
-        # result = await always_fail()
-        result = await qa_node_always_fail()
-        print(f'result-->{result}')
-    asyncio.run(main())

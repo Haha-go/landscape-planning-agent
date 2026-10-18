@@ -1,0 +1,10 @@
+{"plan_file": "plan_01.pdf", "ok": true, "system_wall_min": 0.228, "overall_score": 21.6, "steps_complete": true, "tokens_dim_retry": 3078, "error": null}
+{"plan_file": "plan_02.pdf", "ok": true, "system_wall_min": 0.158, "overall_score": 23.6, "steps_complete": true, "tokens_dim_retry": 3229, "error": null}
+{"plan_file": "plan_03.pdf", "ok": true, "system_wall_min": 0.139, "overall_score": 20.8, "steps_complete": true, "tokens_dim_retry": 3357, "error": null}
+{"plan_file": "plan_04.pdf", "ok": true, "system_wall_min": 0.147, "overall_score": 21.6, "steps_complete": true, "tokens_dim_retry": 3069, "error": null}
+{"plan_file": "plan_05.pdf", "ok": true, "system_wall_min": 0.147, "overall_score": 24.8, "steps_complete": true, "tokens_dim_retry": 3220, "error": null}
+{"plan_file": "plan_06.pdf", "ok": true, "system_wall_min": 0.142, "overall_score": 16.8, "steps_complete": true, "tokens_dim_retry": 2735, "error": null}
+{"plan_file": "plan_07.pdf", "ok": true, "system_wall_min": 0.152, "overall_score": 27.6, "steps_complete": true, "tokens_dim_retry": 3229, "error": null}
+{"plan_file": "plan_08.pdf", "ok": true, "system_wall_min": 0.163, "overall_score": 24.8, "steps_complete": true, "tokens_dim_retry": 3049, "error": null}
+{"plan_file": "plan_09.pdf", "ok": true, "system_wall_min": 0.141, "overall_score": 28.4, "steps_complete": true, "tokens_dim_retry": 3263, "error": null}
+{"plan_file": "plan_10.pdf", "ok": true, "system_wall_min": 0.142, "overall_score": 25.6, "steps_complete": true, "tokens_dim_retry": 3175, "error": null}

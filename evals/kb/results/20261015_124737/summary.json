@@ -1,0 +1,79 @@
+{
+  "run_id": "20261015_124737",
+  "generated_at": "2026-10-15T05:44:19.258604+00:00",
+  "engineering_pass": true,
+  "overall_pass": true,
+  "metrics": [
+    {
+      "name": "意图准确率",
+      "value": "100.00%",
+      "target": "≥95%",
+      "pass": true,
+      "status": "PASS",
+      "note": "140/140"
+    },
+    {
+      "name": "检索增强命中率",
+      "value": "100.00%",
+      "target": "≥90%",
+      "pass": true,
+      "status": "PASS",
+      "note": "50/50"
+    },
+    {
+      "name": "引用准确率",
+      "value": "100.00%",
+      "target": "≥95%",
+      "pass": true,
+      "status": "PASS",
+      "note": "50/50"
+    },
+    {
+      "name": "幻觉率",
+      "value": "0.00%",
+      "target": "<3%",
+      "pass": true,
+      "status": "PASS",
+      "note": "0/80"
+    },
+    {
+      "name": "首 token P95",
+      "value": "770.8 ms",
+      "target": "<3000 ms",
+      "pass": true,
+      "status": "PASS",
+      "note": "n=30"
+    },
+    {
+      "name": "Token 降约",
+      "value": "68.63%",
+      "target": "≥25%",
+      "pass": true,
+      "status": "PASS",
+      "note": "A=54324 B=17039"
+    },
+    {
+      "name": "相对纯 LLM",
+      "value": "142.11%",
+      "target": "≥40%",
+      "pass": true,
+      "status": "PASS",
+      "note": "pure=38.00% rag=92.00%"
+    },
+    {
+      "name": "查规范时间降幅",
+      "value": "73.43%",
+      "target": "≥70%",
+      "pass": true,
+      "status": "PASS",
+      "note": "filled=20"
+    }
+  ],
+  "sources": {
+    "intent": true,
+    "retrieve": true,
+    "judge": true,
+    "perf": true,
+    "pilot": true
+  }
+}
