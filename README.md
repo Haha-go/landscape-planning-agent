@@ -1,6 +1,7 @@
 # 规划方案助手——多 Agent 智能体平台
 
-当前版本：**[v1.0.0](CHANGELOG.md)**
+当前版本：**[v1.0.0](CHANGELOG.md)**  
+作品预览（GitHub Pages）：https://haha-go.github.io/landscape-planning-agent/
 
 面向规划设计场景的 **多 Agent 智能体平台**：
 统一对话入口，按意图分流到规范问答或方案审核，并支持系统初审 + 人工终审闭环。

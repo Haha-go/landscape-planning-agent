@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="规划助手：多 Agent 规划审核与规范可溯源问答平台作品展示" />
+  <title>规划助手 · 作品展示</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css" />
+</head>
+<body>
+  <div class="atmosphere" aria-hidden="true"></div>
+
+  <header class="hero wrap">
+    <h1 class="brand">规划助手</h1>
+    <p class="headline">面向规划设计场景的多 Agent 智能体平台</p>
+    <p class="lede">统一对话入口，按意图分流到规范问答或方案审核，并支持系统初审与人工终审闭环。</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://github.com/Haha-go/landscape-planning-agent">查看源码</a>
+      <a class="btn btn-ghost" href="https://github.com/Haha-go/landscape-planning-agent/blob/master/docs/ARCHITECTURE.md">架构说明</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap" aria-labelledby="products-title">
+      <h2 id="products-title" class="section-title">双产品</h2>
+      <p class="section-note">三档模式：自动 / 规范智库 / 规划通，由 Orchestrator 路由到对应子图。</p>
+      <div class="products">
+        <article class="product">
+          <h3>规划通</h3>
+          <p>PDF 结构化抽取 → 五维并行评分 → 加权总分与问题清单 → 可选人工认领、改分与终审。</p>
+        </article>
+        <article class="product">
+          <h3>规范智库</h3>
+          <p>意图分类 → 直答或 RAG 检索生成 → SSE 流式输出 → 正文引用高亮与正式规范标号。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap" aria-labelledby="stack-title">
+      <h2 id="stack-title" class="section-title">技术栈</h2>
+      <p class="section-note">异步 Python 服务端 + 静态前端；Agent 编排与可溯源检索分离部署。</p>
+      <ul class="stack">
+        <li>Python 3.11</li>
+        <li>FastAPI · SSE</li>
+        <li>LangChain · LangGraph</li>
+        <li>RAG · Milvus</li>
+        <li>PostgreSQL</li>
+        <li>DeepSeek-V3</li>
+      </ul>
+    </section>
+
+    <section class="wrap" aria-labelledby="metrics-title">
+      <h2 id="metrics-title" class="section-title">成效摘要</h2>
+      <p class="section-note">完整口径与复跑方式见仓库 <code>evals/</code> 与架构文档。</p>
+
+      <table class="metrics">
+        <caption>规范智库（工程门槛）</caption>
+        <thead>
+          <tr><th>指标</th><th>门槛</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>意图准确率</td><td>≥ 95%</td></tr>
+          <tr><td>检索增强命中率（standards）</td><td>≥ 90%</td></tr>
+          <tr><td>引用准确率</td><td>≥ 95%</td></tr>
+          <tr><td>幻觉率</td><td>&lt; 3%</td></tr>
+          <tr><td>RAG 首 token P95</td><td>&lt; 3s</td></tr>
+        </tbody>
+      </table>
+
+      <table class="metrics">
+        <caption>规划通试点（2026-10-15，n=10）</caption>
+        <thead>
+          <tr><th>指标</th><th>实测</th><th>目标</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>初审耗时降幅</td><td>99.7%</td><td>≥ 50%</td></tr>
+          <tr><td>复核工作量降幅</td><td>58.0%</td><td>≥ 50%</td></tr>
+          <tr><td>周期缩短</td><td>68.7%</td><td>≥ 60%</td></tr>
+          <tr><td>Token 降幅</td><td>50.0%</td><td>≥ 25%</td></tr>
+          <tr><td>平均绝对改分差</td><td>2.50 分</td><td>报告即可</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer class="site-footer wrap">
+    <p>本页为静态作品展示；完整 Demo 需按仓库 README 本地启动（FastAPI + Postgres + Milvus + LLM）。</p>
+    <p>
+      <a href="https://github.com/Haha-go/landscape-planning-agent#readme">GitHub README</a>
+      · v1.0.0
+    </p>
+  </footer>
+</body>
+</html>
