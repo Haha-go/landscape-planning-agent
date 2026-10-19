@@ -24,6 +24,49 @@
   </header>
 
   <main>
+    <section class="wrap wrap-wide" aria-labelledby="preview-title">
+      <h2 id="preview-title" class="section-title">界面预览</h2>
+      <p class="section-note">按真实使用顺序走查：首页与登录 → 规范智库问答 → 规划通评估与问题清单。点击图片可放大。</p>
+      <div class="gallery">
+        <figure class="shot">
+          <button type="button" class="shot-btn" data-full="preview/home.png" aria-label="放大：首页与登录">
+            <img src="preview/home.png" alt="规划助手首页：自动分流与登录入口" loading="lazy" width="1200" height="750" />
+          </button>
+          <figcaption>首页与登录：三档模式入口，查规范可匿名，上传方案需登录。</figcaption>
+        </figure>
+        <figure class="shot">
+          <button type="button" class="shot-btn" data-full="preview/kb-answer.png" aria-label="放大：规范智库问答">
+            <img src="preview/kb-answer.png" alt="规范智库：绿地率问答与条文引用" loading="lazy" width="1200" height="750" />
+          </button>
+          <figcaption>规范智库：可溯源问答，正文引用高亮并附正式规范标号。</figcaption>
+        </figure>
+        <figure class="shot">
+          <button type="button" class="shot-btn" data-full="preview/plan-running.png" aria-label="放大：规划通评估进行中">
+            <img src="preview/plan-running.png" alt="规划通：上传 PDF 后五维并行评分进行中" loading="lazy" width="1200" height="750" />
+          </button>
+          <figcaption>规划通评估中：解析 PDF、抽取要点与五维并行打分。</figcaption>
+        </figure>
+        <figure class="shot">
+          <button type="button" class="shot-btn" data-full="preview/plan-score.png" aria-label="放大：综合得分与五维评分">
+            <img src="preview/plan-score.png" alt="规划通：综合得分 68 与五维得分卡片" loading="lazy" width="1200" height="750" />
+          </button>
+          <figcaption>综合得分与五维评分：系统初审结果，可进入人工评审。</figcaption>
+        </figure>
+        <figure class="shot">
+          <button type="button" class="shot-btn" data-full="preview/plan-issues.png" aria-label="放大：主要问题清单">
+            <img src="preview/plan-issues.png" alt="规划通：主要问题清单，按维度标注" loading="lazy" width="1200" height="750" />
+          </button>
+          <figcaption>主要问题清单：按维度标注风险点与改进建议。</figcaption>
+        </figure>
+        <figure class="shot">
+          <button type="button" class="shot-btn" data-full="preview/plan-dims.png" aria-label="放大：维度明细">
+            <img src="preview/plan-dims.png" alt="规划通：五维得分明细可展开" loading="lazy" width="1200" height="750" />
+          </button>
+          <figcaption>维度明细：各维分数可展开查看依据。</figcaption>
+        </figure>
+      </div>
+    </section>
+
     <section class="wrap" aria-labelledby="products-title">
       <h2 id="products-title" class="section-title">双产品</h2>
       <p class="section-note">三档模式：自动 / 规范智库 / 规划通，由 Orchestrator 路由到对应子图。</p>
@@ -93,5 +136,32 @@
       · v1.0.0
     </p>
   </footer>
+
+  <dialog class="lightbox" id="lightbox" aria-label="界面放大预览">
+    <form method="dialog" class="lightbox-bar">
+      <button type="submit" class="lightbox-close" aria-label="关闭">关闭</button>
+    </form>
+    <img id="lightbox-img" alt="" />
+  </dialog>
+  <script>
+    (function () {
+      var dlg = document.getElementById("lightbox");
+      var img = document.getElementById("lightbox-img");
+      if (!dlg || !img) return;
+      document.querySelectorAll(".shot-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var src = btn.getAttribute("data-full");
+          var thumb = btn.querySelector("img");
+          img.src = src;
+          img.alt = thumb ? thumb.alt : "";
+          if (typeof dlg.showModal === "function") dlg.showModal();
+          else dlg.setAttribute("open", "");
+        });
+      });
+      dlg.addEventListener("click", function (e) {
+        if (e.target === dlg) dlg.close();
+      });
+    })();
+  </script>
 </body>
 </html>
