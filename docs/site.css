@@ -67,12 +67,13 @@ body {
 
 /* —— Hero —— */
 .hero {
+  position: relative;
   min-height: 100vh;
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 3.5rem 0 4rem;
+  padding: 3.5rem 0 5.5rem;
   animation: riseIn 0.9s var(--ease) both;
 }
 
@@ -142,6 +143,43 @@ body {
 }
 
 .btn-ghost:hover { background: #fff; }
+
+.scroll-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 1.35rem;
+  transform: translateX(-50%);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: color 0.25s var(--ease);
+  animation: hintFloat 2.2s ease-in-out infinite;
+}
+
+.scroll-hint:hover {
+  color: var(--accent-deep);
+  animation-play-state: paused;
+}
+
+.scroll-hint-chevron {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  opacity: 0.85;
+}
+
+@keyframes hintFloat {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.75; }
+  50% { transform: translateX(-50%) translateY(6px); opacity: 1; }
+}
 
 /* —— Sections —— */
 section {

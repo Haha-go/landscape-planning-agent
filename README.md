@@ -129,7 +129,7 @@ python -m uvicorn backend.main:app --host 0.0.0.0 --port 8000
 
 规范智库与规划通题集、指标分开统计。完整口径与复跑方式见 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) §9 与 `evals/*/README.md`。
 
-### 规范智库（工程门槛）
+### 规范智库
 
 | 指标 | 门槛 |
 |------|------|
